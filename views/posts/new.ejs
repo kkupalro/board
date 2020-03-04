@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('../partials/head') %>
+  </head>
+  <body>
+    <%- include('../partials/nav') %>
+
+    <div class="container mb-3">
+      <!-- breadcrumb 사용 홈으로 / 게시판 / 게시글 작성하기 -->
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb p-1 pl-2 pr-2">
+          <li class="breadcrumb-item"><a href="/">홈으로</a></li>
+          <li class="breadcrumb-item"><a href="/posts">게시판</a></li>
+          <li class="breadcrumb-item active" aria-current="page">게시글 작성하기</li>
+        </ol>
+      </nav>
+
+      <form action="/posts" method="post">
+        <!-- form이 submit되면 '/posts'에 post를 요청함 -->
+        <div class="form-group">
+          <label for="title">글 제목</label>
+          <input type="text" id="title" name="title" value="<%= post.title %>" class="form-control <%= (errors.title)?'is-invalid':'' %>">
+          <% if(errors.title){ %>
+            <span class="invalid-feedback"><%= errors.title.message %></span>
+          <% } %>
+        </div>
+
+        <div class="form-group">
+          <label for="body">글 내용</label>
+          <textarea id="body" name="body" rows="5" class="form-control <%= (errors.body)?'is-invalid':'' %>"><%= post.body %></textarea>
+          <% if(errors.body){ %>
+            <span class="invalid-feedback"><%= errors.body.message %></span>
+          <% } %>
+        </div>
+
+        <% if(errors.unhandled){ %>
+          <div class="invalid-feedback d-block">
+            <%= errors.unhandled %>
+          </div>
+        <% } %>
+
+        <div>
+          <a class="btn btn-dark" href="/posts">뒤로가기</a>
+          <button type="submit" class="btn btn-dark">작성하기</button>
+        </div>
+
+      </form>
+
+    </div>
+  </body>
+</html>

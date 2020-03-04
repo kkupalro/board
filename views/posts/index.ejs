@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- <%- include %>를 사용하여 외부 ejs(head)를 가져옴 -->
+    <%- include('../partials/head') %>
+  </head>
+  <body>
+    <!-- <%- include %>를 사용하여 외부 ejs(nav)를 가져옴 -->
+    <%- include('../partials/nav') %>
+
+    <div class="container mb-3">
+
+      <h2 class="mb-3">게시판</h2>
+
+      <table class="board-table table table-sm border-bottom">
+
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">제목</th>
+            <th scope="col" class="author">작성자</th>
+            <th scope="col" class="date">작성 날짜</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% if(posts == null || posts.length == 0){ %>
+            <tr>
+              <td colspan=2> There is no data to show :( </td>
+            </tr>
+          <% } %>
+          <% posts.forEach(function(post) { %>
+            <!-- posts object에 forEach를 사용해 코드를 반복해서 표시함 -->
+            <tr>
+              <td>
+                <a href="/posts/<%= post._id %>"><div class="ellipsis"><%= post.title %></div></a>
+                <!-- posts show action과 연결함 -->
+              </td>
+              <td class="author">
+                <div class="ellipsis"><%= post.author ? post.author.username : "" %></div>
+              </td>
+              <td class="date">
+                <span data-date="<%= post.createdAt %>"></span>
+                <!-- date-date가 element에 사용됨 -->
+                <!-- public/js/script.js에 의해 '년-월-일' 형태로 출력 -->
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+
+      </table>
+
+      <div>
+        <!-- 로그인된 경우에만 활성화 -->
+        <% if(isAuthenticated){ %>
+          <a class="btn btn-dark" href="/posts/new">작성하기</a>
+        <% } %>
+      </div>
+
+    </div>
+  </body>
+</html>

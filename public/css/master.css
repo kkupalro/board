@@ -1,0 +1,32 @@
+body {
+  font-family: 'Nanum Gothic', sans-serif;
+}
+.breadcrumb-item {
+  font-size: 0.8em !important;
+}
+.ellipsis{
+  display: block;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; /* text가 길 경우, 넘치는 text를 ...로 표시하는 옵션 */
+}
+
+.board-table {
+  table-layout: fixed;
+}
+.board-table .author,
+.board-table .date {
+  width: 100px;
+}
+
+.post-body{
+  white-space: pre-line; /* 게시글 본문의 줄바꿈 */
+}
+.post-info{
+  font-size: 0.8em;
+}
+
+.user-form {
+  width: 400px;
+}
