@@ -1,6 +1,6 @@
 <b>MongoDB를 활용한 게시판 웹 어플리케이션
 
-* 
+..npm package lists..
 npm init : package.json 생성 (node 프로젝트를 생성)
 
 npm install --save [package 이름] : 현재폴더/node_modules에 해당 package를 다운
