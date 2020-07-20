@@ -26,7 +26,7 @@ npm install --save mongoose
 ```
 npm install --save body-parser
 ```
-7 actions 중 update와 destory는 HTTP Methods 중 put과 delete를 사용하는데, 대부분의 form은 get과 post만을 허용하므로<br>
+7 actions 중 update와 destory는 HTTP Methods 중 put과 delete를 사용하는데, 대부분의 form은 get과 post만을 허용하므로
 해당 package를 설치하여 이를 우회함. query로 method 값을 받아서 request의 HTTP method를 바꿔주는 역할을 함
 ```
 npm install --save method-override
